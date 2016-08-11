@@ -8,16 +8,16 @@
 
 int getOnePort(int nowport)
 {
-	return 80;
+	return nowport;
 }
 string setDomainName(string addr)
 {
-	return "www.baidu.com";
+	return addr;
 }
 
-string setFilePath(int nownum)
+string setFilePath(string path)
 {
-	return "/hangj/";
+	return path;
 }
 
 char* initializeBuffer(int length)
@@ -28,6 +28,15 @@ char* initializeBuffer(int length)
 		buffer[i] = 0;
 	}
 	return buffer;
+}
+
+struct sockaddr_in initializeSockaddr(struct hostent *he, int g_nPort){
+	struct sockaddr_in cliaddr = { 0 };
+	cliaddr.sin_family = AF_INET;
+	cliaddr.sin_port = htons(g_nPort);
+	cliaddr.sin_addr = *((struct in_addr*)he->h_addr_list[0]);
+	cout << "ip: " << inet_ntoa(*(struct in_addr*)he->h_addr_list[0]) << "port: " << g_nPort << endl;
+	return cliaddr;
 }
 
 

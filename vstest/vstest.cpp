@@ -17,16 +17,50 @@ int _tmain(int argc, _TCHAR* argv[])
 */
 //#include <WinSock2.h>
 
+void test();
+void run(int port, string addr, string path);
+
+
+
+
+
 
 int main(int argc, char* argv[])
 {
+	cout << "begin test: " << endl;
+
+	test();
+
+	system("pause");
+	return 0;
+}
+
+
+
+
+
+void test(){
+
+	int port = 0;
+	for (int port = 1; port < 10000; port++){
+
+		run(port, "172.16.21.51", "");
+	}
+
+	//run(80, "www.baidu.com", "");
+	//run(80, "123.206.90.107", "");
+
+}
+
+void run(int port, string addr, string path){
+
 	// 发送的数据
-	int g_nPort = getOnePort(80);
-	string g_strAddr = setDomainName("");
-	string g_strPath = setFilePath(1);
+	int g_nPort = getOnePort(port);
+	string g_strAddr = setDomainName(addr);
+	string g_strPath = setFilePath(path);
 
 	//  Windows Sockets implementation
-	
+
 	WSADATA WSAData;
 	if (WSAStartup(MAKEWORD(2, 2), &WSAData)){
 		printf("initializationing error!\n");
@@ -34,8 +68,8 @@ int main(int argc, char* argv[])
 		exit(-1);
 	}
 
-	struct hostent  *he;
-	if ((he = gethostbyname(g_strAddr.c_str())) == NULL){
+	struct hostent  *he = gethostbyname(g_strAddr.c_str());
+	if ( he == NULL){
 		printf("gethostbyname failed.\n");
 		WSACleanup();
 		exit(-1);
@@ -43,11 +77,7 @@ int main(int argc, char* argv[])
 
 
 	// 创建socket套接子
-	struct sockaddr_in      CliAddr = { 0 };
-	CliAddr.sin_family = AF_INET;
-	CliAddr.sin_port = htons(g_nPort);
-	CliAddr.sin_addr = *((struct in_addr*)he->h_addr_list[0]);
-	cout << "ip: " << inet_ntoa(*(struct in_addr*)he->h_addr_list[0]) << endl;
+	struct sockaddr_in      CliAddr = initializeSockaddr(he, g_nPort);
 
 	int sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (INVALID_SOCKET == sockfd){
@@ -55,49 +85,55 @@ int main(int argc, char* argv[])
 		WSACleanup();
 		exit(-1);
 	}
+	cout << "sockfd....." << endl;
 	if (0 > connect(sockfd, (struct sockaddr*)&CliAddr, sizeof(CliAddr))){
-		printf("connect failed.\n");
+		printf("connect failed: %d\n", WSAGetLastError());
 		WSACleanup();
-		exit(-1);
+		//system("pause");
+		//exit(-1);
+		return;
 	}
-
+	cout << "finish connect..." << endl;
 
 	// prepare to send message
 	string strSend = getSendMessage(g_strPath, g_strAddr);
 
 	// cache
 	char* bufSend = initializeBuffer(1024);
-	sprintf(bufSend, "%s", strSend.c_str());
+	sprintf(bufSend, "%s------", strSend.c_str());
 	if (0 > send(sockfd, bufSend, strlen(bufSend), 0)){
 		printf("send failed.\n");
 		WSACleanup();
 		exit(-1);
 	}
 
-	ofstream os("hangj.html");
+	ofstream os("hangj.html", ios::app);
 
-	char* bufRecv = initializeBuffer(1024);
-	bufRecv[1024] = 0;
+	int bufRecvLength = 1024;
+	char* bufRecv = initializeBuffer(bufRecvLength);
+	//cout << "sizeof bufrecv: " << strlen(bufRecv) << endl;
+	bufRecv[bufRecvLength] = 0;
 	int nRet = 0;
-	printf("recv: \n");
-	while (sizeof(bufRecv)-1 < (nRet = recv(sockfd, bufRecv, sizeof(bufRecv), 0))){
+	//printf("recv: \n");
+	int count = 0;
+	count = 0;
+	while (sizeof(bufRecv)-1 < (nRet = recv(sockfd, bufRecv, bufRecvLength, 0))){
 		// bufRecv[nRet] = 0;
 		// printf("%s", bufRecv);
 		cout.clear();
-		cout << bufRecv;
 		os << bufRecv;
+		//cout << count << " ++++ ;;;;" << bufRecv << endl;
+		cout << bufRecv;
+		//cout << "len: " << strlen(bufRecv) << endl;
+		//if( count > 6) 
+			//break;
+		count++;
 	}
 	bufRecv[nRet] = 0;
-	printf("%s\nendding", bufRecv);
+	//printf("%s\nendding", bufRecv);
 	os << bufRecv;
 
 	os.close();
 	closesocket(sockfd);
 	WSACleanup();
-
-
-
-
-	system("pause");
-	return 0;
 }
