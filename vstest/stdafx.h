@@ -13,7 +13,13 @@
 
 
 // TODO:  在此处引用程序需要的其他头文件
-# include "declarefunctions.h"
 
+#include <iostream>
+using namespace std;
+#include <cstring>
+#include <fstream>
+#pragma comment(lib, "ws2_32.lib")
+
+#include "declarefunctions.h"
 
 
