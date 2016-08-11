@@ -1,0 +1,77 @@
+#include <WinSock2.h>
+#include <iostream>
+#include <string>
+#include <fstream>
+ 
+#pragma comment(lib, "ws2_32.lib")
+ 
+using namespace std;
+ 
+const int       g_nPort     = 80;
+const string    g_strAddr   = "www.cnblogs.com";
+const string    g_strPath   = "/hangj/";
+ 
+int main(int argc, char* argv[])
+{
+    WSADATA WSAData;
+    if (WSAStartup(MAKEWORD(2,2), &WSAData)){
+        printf("initializationing error!\n");
+        WSACleanup();
+        exit(-1);
+    }
+ 
+    struct hostent  *he;
+    if ((he = gethostbyname(g_strAddr.c_str()))==NULL){
+        printf("gethostbyname failed.\n");
+        WSACleanup();
+        exit(-1);
+    }
+ 
+    struct sockaddr_in      CliAddr = {0};
+    CliAddr.sin_family      = AF_INET;
+    CliAddr.sin_port        = htons(g_nPort);
+    CliAddr.sin_addr        = *((struct in_addr*)he->h_addr_list[0]);
+    cout <<"ip: "<< inet_ntoa(*(struct in_addr*)he->h_addr_list[0]) <<endl;
+ 
+    int sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+    if (INVALID_SOCKET == sockfd){
+        printf("socket failed.\n");
+        WSACleanup();
+        exit(-1);
+    }
+    if (0 > connect(sockfd, (struct sockaddr*)&CliAddr, sizeof(CliAddr))){
+        printf("connect failed.\n");
+        WSACleanup();
+        exit(-1);
+    }
+    string strSend="";
+    strSend += "GET " + g_strPath + " HTTP/1.1\n";  // URL
+    strSend += "Host: " + g_strAddr + "\n\n";       // Host
+ 
+    char bufSend[1024]={0};
+    sprintf(bufSend, "%s", strSend.c_str());
+    if (0 > send(sockfd, bufSend, strlen(bufSend), 0)){
+        printf("send failed.\n");
+        WSACleanup();
+        exit(-1);
+    }
+ 
+    ofstream os("hangj.html");
+ 
+    char bufRecv[10]={0};
+    int nRet=0;
+    printf("recv: \n");
+    while (sizeof(bufRecv)-1 <= (nRet=recv(sockfd, bufRecv, sizeof(bufRecv)-1, 0))){
+        bufRecv[nRet] = 0;
+        printf("%s", bufRecv);
+        os << bufRecv;
+    }
+    bufRecv[nRet] = 0;
+    printf("%s\n", bufRecv);
+    os << bufRecv;
+ 
+    os.close();<br>　　　　　closesocket(sockfd);
+    WSACleanup();
+    getchar();
+    return 0;
+}
