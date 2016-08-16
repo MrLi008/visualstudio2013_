@@ -28,3 +28,13 @@ StdAfx.h, StdAfx.cpp
 应用程序向导使用“TODO:”注释来指示应添加或自定义的源代码部分。
 
 /////////////////////////////////////////////////////////////////////////////
+
+declarefunctions.h, declarefunctions.cpp
+	添加测试的功能
+	getOnePort(int) 得到一个端口
+	getSendMessage(string, string) 得到要发送的消息
+	initializeBuffer(int) 初始化一个缓存
+	initializeSockaddr(hostname *, int) 初始化Sockaddr
+	setDomainName(string) 设置域名
+	setFilePath(string) 设置文件路径
+	sockaddr_in

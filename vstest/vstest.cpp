@@ -41,14 +41,17 @@ int main(int argc, char* argv[])
 
 void test(){
 
-	int port = 0;
-	for (int port = 1; port < 10000; port++){
+	//int port = 0;
+	//for (int port = 50; port < 10000; port++){
 
-		run(port, "172.16.21.51", "");
-	}
+	//	run(port, "172.16.21.41", "");
+	//}
 
 	//run(80, "www.baidu.com", "");
 	//run(80, "123.206.90.107", "");
+	run(80, "172.16.21.41", "");
+	// ·ÃÎÊÄ¬ÈÏÖ÷Ò³, ·ÖÎöÍøÒ³±àÐ´µÄÓïÑÔ
+	// ±¬ÆÆ
 
 }
 
@@ -63,16 +66,19 @@ void run(int port, string addr, string path){
 
 	WSADATA WSAData;
 	if (WSAStartup(MAKEWORD(2, 2), &WSAData)){
-		printf("initializationing error!\n");
+		printf("initializationing error: %d\n", WSAGetLastError());
 		WSACleanup();
-		exit(-1);
+
+		// exit(-1);
+		return;
 	}
 
 	struct hostent  *he = gethostbyname(g_strAddr.c_str());
 	if ( he == NULL){
-		printf("gethostbyname failed.\n");
+		printf("gethostbyname failed: %d\n", WSAGetLastError());
 		WSACleanup();
-		exit(-1);
+		//exit(-1);
+		return;
 	}
 
 
@@ -81,9 +87,10 @@ void run(int port, string addr, string path){
 
 	int sockfd = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (INVALID_SOCKET == sockfd){
-		printf("socket failed.\n");
+		printf("socket failed: %d\n", WSAGetLastError());
 		WSACleanup();
-		exit(-1);
+		// exit(-1);
+		return;
 	}
 	cout << "sockfd....." << endl;
 	if (0 > connect(sockfd, (struct sockaddr*)&CliAddr, sizeof(CliAddr))){
@@ -102,11 +109,13 @@ void run(int port, string addr, string path){
 	char* bufSend = initializeBuffer(1024);
 	sprintf(bufSend, "%s------", strSend.c_str());
 	if (0 > send(sockfd, bufSend, strlen(bufSend), 0)){
-		printf("send failed.\n");
+		printf("send failed: %d\n", WSAGetLastError());
 		WSACleanup();
-		exit(-1);
+		// exit(-1);
+		return;
 	}
 
+	cout << " send message....." << endl;
 	ofstream os("hangj.html", ios::app);
 
 	int bufRecvLength = 1024;
@@ -114,7 +123,7 @@ void run(int port, string addr, string path){
 	//cout << "sizeof bufrecv: " << strlen(bufRecv) << endl;
 	bufRecv[bufRecvLength] = 0;
 	int nRet = 0;
-	//printf("recv: \n");
+	printf("recv: \n");
 	int count = 0;
 	count = 0;
 	while (sizeof(bufRecv)-1 < (nRet = recv(sockfd, bufRecv, bufRecvLength, 0))){
