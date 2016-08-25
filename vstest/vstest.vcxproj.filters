@@ -30,6 +30,15 @@
     <ClInclude Include="declarefunctions.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="TestClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MyHandle.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Integer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -39,6 +48,24 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="declarefunctions.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TestClass.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MyHandle.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="classtestMyHandle.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Integer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="testproductcharactors.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="getfilefromdir.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

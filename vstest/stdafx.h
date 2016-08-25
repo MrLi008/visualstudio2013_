@@ -11,11 +11,20 @@
 #include <tchar.h>
 #include <thread>
 #include "windows.h"
-
+#include <vector>
 
 
 
 // TODO:  在此处引用程序需要的其他头文件
+
+// Here is the class
+
+
+#include "Integer.h"
+#include "MyHandle.h"
+
+// Here is the function
+
 
 #include <iostream>
 using namespace std;

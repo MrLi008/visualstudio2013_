@@ -31,4 +31,14 @@ string getSendMessage(string path, string addr);
 
 
 
+// class test MyHandle function:
 
+void testfuncofMyHandle();
+
+// 产生字符串
+int testproductcharactors();
+
+// 获取文件夹下的所有文件
+void getfilefromdir(string filepath, vector<string>& file);
+// 查找这些文件中是否包含某个字符
+void findfrom(const vector<string> files, string str);

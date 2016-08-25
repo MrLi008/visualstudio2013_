@@ -4,6 +4,53 @@
 #include "stdafx.h"
 #include "windows.h"
 
+
+//int main(void){
+//
+//	// getfilefromdir("D:\\exe", vector<string>());
+//	findfrom(vector<string>(), "");
+//	system("pause");
+//	return 0;
+//}
+
+int main(void){
+
+	cout << "This is for productting some ×Ö·û´®" << endl;
+
+
+	
+	testproductcharactors();
+	
+
+	// cout << 'a'-0 << endl;
+
+	system("pause");
+	return 0;
+}
+
+//
+//int main(void){
+//
+//	testfuncofMyHandle();
+//
+//	system("pause");
+//	return 0;
+//}
+//
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -17,6 +64,8 @@ int _tmain(int argc, _TCHAR* argv[])
 */
 //#include <WinSock2.h>
 
+
+/*
 void test();
 void run(int port, string addr, string path);
 
@@ -29,7 +78,19 @@ int main(int argc, char* argv[])
 {
 	cout << "begin test: " << endl;
 
-	test();
+	//test();
+	
+		const string s ("string");
+		string* teststring = new string();
+		char * ch = new char(10);
+		// cin >> ch;
+		// teststring = ch;
+		// cin >> teststring; ´Ë´¦ÓĞ´í!
+		cout << s.c_str() << ";;;" << teststring->c_str();
+		sprintf(initializeBuffer(s.length()), "%s-------------", s);
+	
+
+
 
 	system("pause");
 	return 0;
@@ -49,7 +110,7 @@ void test(){
 
 	//run(80, "www.baidu.com", "");
 	//run(80, "123.206.90.107", "");
-	run(80, "172.16.21.41", "");
+	run(80, "172.16.22.128", "/uploads/index.php");
 	// ·ÃÎÊÄ¬ÈÏÖ÷Ò³, ·ÖÎöÍøÒ³±àĞ´µÄÓïÑÔ
 	// ±¬ÆÆ
 
@@ -146,3 +207,6 @@ void run(int port, string addr, string path){
 	closesocket(sockfd);
 	WSACleanup();
 }
+
+
+*/

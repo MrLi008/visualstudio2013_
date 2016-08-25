@@ -38,3 +38,7 @@ declarefunctions.h, declarefunctions.cpp
 	setDomainName(string) 设置域名
 	setFilePath(string) 设置文件路径
 	sockaddr_in
+
+
+学习经验
+	1, 模板类尽量内敛
