@@ -85,6 +85,8 @@ int main(void){
 	d->print();
 
 	delete d;*/
+
+
 	system("pause");
 	return 0;
 }
