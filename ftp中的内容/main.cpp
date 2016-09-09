@@ -2,15 +2,15 @@
 
 using namespace std;
 
-void printNode(DirectedGraphNode* node){
-	if (node != NULL){
-		node->print();
-		cout << " ";
-		printNode(node->getCol());
-		cout << endl<< "b";
-		printNode(node->getRaw());
-	}
-}
+//void printNode(DirectedGraphNode* node){
+//	if (node != NULL){
+//		node->print();
+//		cout << " ";
+//		printNode(node->getCol());
+//		cout << endl<< "b";
+//		printNode(node->getRaw());
+//	}
+//}
 
 int main(void){
 
@@ -72,7 +72,7 @@ int main(void){
 
 	// Test: DirectedGraph
 
-	/*const int biggest = 100000;
+	const int biggest = 100000;
 	int a[5][5] = {
 			{ 1,	biggest,	6,			7,			8 },
 			{ 2,	9,			10,			biggest,	11 },
@@ -84,7 +84,7 @@ int main(void){
 	DirectedGraph* d = new DirectedGraph(a, 5, 5);
 	d->print();
 
-	delete d;*/
+	delete d;
 
 
 
