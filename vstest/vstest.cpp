@@ -5,6 +5,37 @@
 #include "windows.h"
 
 
+
+// ¿∏’§º”√‹
+// 
+int main( void ) {
+
+	char*ch = "tn c0afsiwal kes,hwit1r  g,npt  ttessfu}ua u  hmqik e {m,  n huiouosarwCniibecesnren.";
+	//char*ch = "12345";
+	int length = strlen(ch);
+	//int num = 1;
+
+	char*res = new char[ length ];
+	for ( int num = 1; num <= length; num++ ) {
+		for ( int i = 0; i < length; i++ ) {
+			res[ i ] = ch[( i * num + i%length) % length ];
+		
+		}
+		for ( int i = 0; i < length; i++ ) {
+			cout << res[ i ];
+			if ( i + 1 < length ) {
+				if ( res[ i ] == 'f' && res[ i + 1 ] == '{' ) {
+					cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||";
+				}
+			}
+		}
+		cout << endl;
+	}
+
+	system( "pause" );
+	return 0;
+}
+
 //int main(void){
 //
 //	// getfilefromdir("D:\\exe", vector<string>());
@@ -13,20 +44,20 @@
 //	return 0;
 //}
 
-int main(void){
-
-	cout << "This is for productting some ◊÷∑˚¥Æ" << endl;
-
-
-	
-	testproductcharactors();
-	
-
-	// cout << 'a'-0 << endl;
-
-	system("pause");
-	return 0;
-}
+//int main(void){
+//
+//	cout << "This is for productting some ◊÷∑˚¥Æ" << endl;
+//
+//
+//	
+//	testproductcharactors();
+//	
+//
+//	// cout << 'a'-0 << endl;
+//
+//	system("pause");
+//	return 0;
+//}
 
 //
 //int main(void){
