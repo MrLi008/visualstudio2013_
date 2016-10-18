@@ -68,5 +68,11 @@
     <ClCompile Include="getfilefromdir.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="scanPortSimple.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ScanPortByTCPSYN.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

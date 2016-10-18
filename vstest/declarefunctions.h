@@ -1,4 +1,5 @@
 // 函数的声明写在这里
+// 原则: 个体功能完整, 有单独的测试过程
 #pragma once;
 
 #include "stdafx.h"
@@ -42,3 +43,20 @@ int testproductcharactors();
 void getfilefromdir(string filepath, vector<string>& file);
 // 查找这些文件中是否包含某个字符
 void findfrom(const vector<string> files, string str);
+
+
+
+
+// 端口扫描
+// 建议完整端口扫描控制台程序
+
+void testScanPortSimple();
+void scanPortSimple( int port_begin, int port_end, char* ip );
+
+
+// TCP SYN 扫描
+// 步骤:
+// 1, 构造TCP数据包
+// 2, 修改头信息
+void testScanPortByTCPSYN();
+void ScanPortByTCPSYN(int port_begin, int port_end, char* ip);

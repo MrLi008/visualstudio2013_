@@ -6,35 +6,63 @@
 
 
 
-// ¿∏’§º”√‹
-// 
-int main( void ) {
+int main() {
 
-	char*ch = "tn c0afsiwal kes,hwit1r  g,npt  ttessfu}ua u  hmqik e {m,  n huiouosarwCniibecesnren.";
-	//char*ch = "12345";
-	int length = strlen(ch);
-	//int num = 1;
-
-	char*res = new char[ length ];
-	for ( int num = 1; num <= length; num++ ) {
-		for ( int i = 0; i < length; i++ ) {
-			res[ i ] = ch[( i * num + i%length) % length ];
-		
-		}
-		for ( int i = 0; i < length; i++ ) {
-			cout << res[ i ];
-			if ( i + 1 < length ) {
-				if ( res[ i ] == 'f' && res[ i + 1 ] == '{' ) {
-					cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||";
-				}
-			}
-		}
-		cout << endl;
-	}
+	testScanPortSimple();
 
 	system( "pause" );
 	return 0;
 }
+
+
+
+
+
+
+
+//
+//// ¿∏’§º”√‹
+//// 
+//int main( void ) {
+//
+//	char*ch = "tn c0afsiwal kes,hwit1r  g,npt  ttessfu}ua u  hmqik e {m,  n huiouosarwCniibecesnren.";
+//	//char*ch = "1234567890";
+//	int length = strlen(ch);
+//	int num = 2;
+//	int n = 0;
+//	char*res = new char[ length ];
+//	for ( int num = 1; num < length; num++ ) {
+//		n = 0;
+//		int counter = length / num;
+//		for ( int j = 0; j < num; j++ ) {
+//			for ( int i = 0; i < counter; i++ ) {
+//				if ( j + i*num < length && n < length) {
+//					res[ n ] = ch[ j + i*num ];
+//					n++;
+//				}
+//			}
+//		}
+//		/*for ( int i = 0; i < length; i++ ) {
+//			res[ i ] = ch[( i * num + i%length) % length ];
+//		
+//		}*/
+//		for ( int i = 0; i < length; i++ ) {
+//			cout << res[ i ];
+//			if ( i + 1 < length ) {
+//				if ( res[ i ] == 'f' && res[ i + 1 ] == '{' ) {
+//					cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||";
+//				}
+//			}
+//		}
+//		cout << endl;
+//	}
+//
+//	system( "pause" );
+//	return 0;
+//}
+//
+
+
 
 //int main(void){
 //
