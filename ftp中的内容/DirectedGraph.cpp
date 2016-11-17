@@ -114,6 +114,7 @@ DirectedGraph* DirectedGraph::getShortestWay( int from, int to ) {
 
 
 /**
+ * 深度优先
  * 参数解释
  * node: 保存了从起点到node->pointIndex的权
  * from: 当前起点编号
@@ -146,6 +147,9 @@ int DirectedGraph::getMaxWeightValueByDepthErgodic( DirectedGraphNode* node, int
 
 }
 
+/**
+ * 根据序号得到该节点
+ */
 DirectedGraphNode* DirectedGraph::getRawNodeOfFrom( DirectedGraphNode* root, int pointIndex ) {
 	DirectedGraphNode* node = root;
 	for ( int i = 0; i < pointIndex; i++ ) {
