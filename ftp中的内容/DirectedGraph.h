@@ -19,15 +19,17 @@
 
 #include "DirectedGraphNode.h"
 //#include "funcs.h"
-#include <list>
 
 #endif
 #pragma once
+
 
 class DirectedGraph :
 	public ObjectEnablePrint
 {
 public:
+
+
 	DirectedGraph();
 	DirectedGraph(int graph[5][5], int columns, int raws);
 
@@ -44,7 +46,7 @@ public:
 
 private:
 	// 搜索算法
-	int getMaxWeightValueByDepthErgodic( DirectedGraphNode* , int, int, list<int>*);
+	int getMaxWeightValueByDepthErgodic( DirectedGraphNode*, int, int);
 	//DirectedGraph* getMaxWeightValueBySpanErgodic();
 
 	// 比较算法的结果是否相同

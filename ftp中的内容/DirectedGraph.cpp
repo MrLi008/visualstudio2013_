@@ -1,7 +1,6 @@
 #include "DirectedGraph.h"
 #include "funcs.h"
 
-#include <list>
 
 
 DirectedGraph::DirectedGraph()
@@ -99,8 +98,7 @@ DirectedGraph* DirectedGraph::getShortestWay( int from, int to ) {
 
 	// 到此, 已找到开始节点进行深度遍历或者广度遍历寻找目标节点
 	// 深度
-	list<int>* values = new list<int>();
-	int v = getMaxWeightValueByDepthErgodic(start,to,0,values);
+	int v = getMaxWeightValueByDepthErgodic(start,to,0);
 	cout << " 深度搜索得到的权值为: " << v;
 	// 广度
 	//DirectedGraph* result2 = getMaxWeightValueBySpanErgodic();
@@ -122,7 +120,7 @@ DirectedGraph* DirectedGraph::getShortestWay( int from, int to ) {
  * maxWeightValue: 最大权值
  */
 
-int DirectedGraph::getMaxWeightValueByDepthErgodic( DirectedGraphNode* node, int to, int weightvalue, list<int>* values ) {
+int DirectedGraph::getMaxWeightValueByDepthErgodic( DirectedGraphNode* node, int to, int weightvalue) {
 	// 如果未找到目标节点node就为空, 说明此路不通
 	if ( node == NULL ) {
 		return biggest + weightvalue;
@@ -130,14 +128,14 @@ int DirectedGraph::getMaxWeightValueByDepthErgodic( DirectedGraphNode* node, int
 	// 如果node所指节点为目标节点, 说明搜索结束
 	// 返回加权值
 	if ( node->getPointIndex() == to ) {
-		values->push_back( weightvalue + node->getValue( ));
+		//values.push_back( weightvalue + node->getValue( ));
 	}
 	// 未到达目标节点
 	// 如果未被搜索
 	if ( !node->isSearch( ) ) {
 		node->search( );// 标记为已被搜索
 		int value = weightvalue + node->getValue( );
-		getMaxWeightValueByDepthErgodic( getRawNodeOfFrom( root, node->getPointIndex( ) ), to,value, values );
+		getMaxWeightValueByDepthErgodic( getRawNodeOfFrom( root, node->getPointIndex( ) ), to,value);
 		// 标记为未被搜索
 		node->unsearch( );
 			
