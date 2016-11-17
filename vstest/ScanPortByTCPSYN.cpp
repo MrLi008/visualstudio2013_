@@ -2,12 +2,11 @@
 
 # pragma once
 // #include <netmon.h>
-#include <MSTcpIP.h>
-#include <WS2tcpip.h>
-#include <fwpmu.h>
-#include <sddl.h>
-#pragma comment(lib, "advapi32.lib")
-#pragma comment(lib, "fwpuclnt.lib")
+// #include <MSTcpIP.h>#include <WS2tcpip.h>
+// #include <fwpmu.h>
+// #include <sddl.h>
+// #pragma comment(lib, "advapi32.lib")
+// #pragma comment(lib, "fwpuclnt.lib")
 
 typedef struct _IPHeader // 20字节的IP头 
 {
@@ -71,11 +70,18 @@ USHORT CheckSum( USHORT* buffer, int size ) {
  * TCP头部和TCP数据
  *
  */
+int TCP_SYN = 1;
+int TCP_ACK = 1;
+int SIO_RCVALL = 1;
 
 void ComputerTcpPseudoHeaderCheckum( IPHeader* pIphdr, 
 									TCPHeader* pTcphdr, 
 									char* payload, 
 									int payloadlen ) {
+	// 假定
+	int TCP_SYN = 1;
+	int TCP_ACK = 1;
+
 
 	char buff[ 1024 ];
 	char* ptr = buff;
@@ -183,7 +189,7 @@ int scanPort( int port, char* ip ) {
 	*	The size, in bytes, of the buffer pointed to by the optval parameter.
 	*	
 	**/
-	setsockopt( sRaw, IPPROTO_IP, IP_HDRINCL, (char*)&bOpt, sizeof( bOpt ) );
+	setsockopt( sRaw, IPPROTO_IP, SO_BROADCAST, (char*)&bOpt, sizeof( bOpt ) );
 
 	// 获取本机主机IP
 	UCHAR strHostName[ 56 ];
