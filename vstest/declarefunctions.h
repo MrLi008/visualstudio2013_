@@ -60,3 +60,31 @@ void scanPortSimple( int port_begin, int port_end, char* ip );
 // 2, 修改头信息
 void testScanPortByTCPSYN();
 void ScanPortByTCPSYN(int port_begin, int port_end, char* ip);
+
+
+//  线程测试:
+/**
+ * 
+ * 自定义结构体 selfarg
+ * 传递给createthread
+ * 在线程函数中 输出
+ * 
+ */
+
+void testselfargbythread();
+// 新建的线程调用的函数
+DWORD WINAPI WorkThread( LPVOID arg );
+
+
+// winpacp简单实用
+void learn_winpacp();
+
+
+// 向服务器发送完整数据
+// 使用winsock实现
+void testSendThread();
+DWORD WINAPI SendThread( LPVOID lpVOID );
+// 解析参数
+void setParam(char* host, char* path);
+// 设置要发送的数据
+char* prepardatatosend( );

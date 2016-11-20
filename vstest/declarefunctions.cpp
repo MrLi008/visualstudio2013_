@@ -25,8 +25,9 @@ char* initializeBuffer(int length)
 	char* buffer = new char[length];
 	for (int i = 0; i < length; i++)
 	{
-		buffer[i] = 0;
+		buffer[i] = ' ';
 	}
+	buffer[ length ] = '\0';
 	return buffer;
 }
 

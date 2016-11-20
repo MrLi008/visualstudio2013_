@@ -4,18 +4,28 @@
 #include "stdafx.h"
 #include "windows.h"
 
-
-
 int main() {
+	// 测试给线程传递自定义数据结构
+	// testselfargbythread( );
 
-	testScanPortSimple();
-
+	// 测试项服务器发送指定数据
+	testSendThread();
 	system( "pause" );
 	return 0;
 }
 
-
-
+//
+//
+//int main() {
+//
+//	testScanPortSimple();
+//
+//	system( "pause" );
+//	return 0;
+//}
+//
+//
+//
 
 
 
