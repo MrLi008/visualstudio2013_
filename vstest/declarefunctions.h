@@ -85,6 +85,6 @@ void learn_winpacp();
 void testSendThread();
 DWORD WINAPI SendThread( LPVOID lpVOID );
 // 解析参数
-void setParam(char* host, char* path);
+void setParam(char* host, char* path, int* port);
 // 设置要发送的数据
 char* prepardatatosend( );
