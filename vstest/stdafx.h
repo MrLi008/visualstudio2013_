@@ -36,3 +36,5 @@ using namespace std;
 #include "declarefunctions.h"
 
 #include "selfarg.h"
+
+#include "notification.h"
