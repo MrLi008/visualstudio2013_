@@ -46,3 +46,30 @@ string getSendMessage(string path, string addr){
 	return	"GET " + path + " HTTP/1.1\n" +  // URL
 			"Host: " + addr + "\n\n";       // Host
 }
+
+
+
+
+/****************************************************************************
+ *
+ *
+ *
+ */
+void testSpecial() {
+	int x = 10;
+	for ( int i = 1; i < x; i+=2 ) {
+		special( i );
+	}
+
+
+}
+void special( int n) {
+	for ( int i = 0; i < n; i++ ) {
+		for ( int j = 0; j < n; j++ ) {
+			cout << "(" << i - n / 2 << ","
+				<< j - n / 2 << ") ";
+		}
+		cout << endl;
+	}
+	cout << "------------------------" << endl;;
+}

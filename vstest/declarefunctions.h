@@ -88,3 +88,8 @@ DWORD WINAPI SendThread( LPVOID lpVOID );
 void setParam(char* host, char* path, int* port);
 // 设置要发送的数据
 char* prepardatatosend( );
+
+
+// 测试输出一个矩形, 中心的值最小, 向四周扩散
+void testSpecial();
+void special( int n);

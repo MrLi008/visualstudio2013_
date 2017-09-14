@@ -4,14 +4,40 @@
 #include "stdafx.h"
 #include "windows.h"
 
-
 int main() {
 
-	testFindChangeNotificationHandle();
+	// print
+	/**
+	 * 212
+	 * 101
+	 * 212
+	 */
+	testSpecial();
 
 	system( "pause" );
 	return 0;
 }
+
+//
+//int main() {
+//
+//	// testFindChangeNotificationHandle();
+//	//char a;
+//	//scanf( "%c", &a );
+//	//printf( "%c", a );
+//	int **b;
+//	int *m = new int();
+//	b = &m;
+//	*b = new int[ 1 ];
+//	for ( int i = 0; i < 10; i++ ) {
+//		int *a = new int(i);
+//	
+//		b = &a;
+//		cout <<b<<":"<<*b<<":"<<**b<<":("<< a << ":" << *a << ")" << endl;
+//	}
+//	system( "pause" );
+//	return 0;
+//}
 //
 //int main() {
 //	// 测试给线程传递自定义数据结构
